@@ -1,0 +1,256 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#  -*- coding: utf-8 -*-
+
+<RootScreen>:
+    transition: FadeTransition()
+    Screen1:
+    Screen2:
+    Screen3:
+
+<Screen1>:
+    name: 'start'
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'klyon.png'
+    BoxLayout:
+        orientation:'vertical'
+        padding: 80
+        spacing: 10
+        Label:
+            id: lbl1
+            text:'1000'
+            color:[0, 0, 0, 1]
+            font_size:60
+            halign:'center'
+            valign:'top'
+            size_hint:(1, .3)
+        Button:
+            id: btn1
+            text:'Game'
+            color:[0, 0, 0, 1]
+            background_down: 'klyon.png'
+            background_normal:'buk.png'
+            font_size: 40
+            size_hint: 1, 0.2
+            on_release: root.manager.current = "game"
+        Button:
+            id: btn2
+            text:'Settings'
+            color:[0, 0, 0, 1]
+            background_down: 'klyon.png'
+            background_normal:'buk.png'
+            font_size: 40
+            size_hint: 1, 0.2
+            on_release:
+                root.manager.current = 'settings'
+        Button:
+            id: btn3
+            text:'Exit'
+            color:[0, 0, 0, 1]
+            background_down: 'klyon.png'
+            background_normal:'buk.png'
+            font_size: 40
+            size_hint: 1, 0.2
+            on_press: app.stop()
+        Widget:
+            size_hint: 1, 0.3
+
+<Screen2>:
+    name: 'game'
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'klyon.png'
+    BoxLayout:
+        id: blt
+        orientation:'vertical'
+        padding: 25
+        GridLayout:
+            cols: 3
+            size_hint:(1, .1)
+            Button:
+                size_hint_x: None
+                width: 60
+                background_normal:'strelka.jpg'
+                background_down: 'strelka.jpg'
+                on_release:
+                    root.manager.current = 'start'
+            Widget:
+            Button:
+                text: 'new game'
+                color: 0,0,0,1
+                size_hint_x: None
+                width: 100
+                background_normal:'buk.png'
+                background_down: 'klyon.png'
+                on_release:
+                    app.New_game()
+                    lbl1.text = app.Label1()
+                    lbl2.text = app.Label2()
+                    lbl3.text = app.Label3()
+                    lbl32.text = app.Label3_2()
+                    lbl33.text = app.Label3_3()
+                    lbl34.text = app.Label3_4()
+                    lbl4.text = app.Label4()
+        Label:
+            id: lbl1
+            text:
+            color:[0, 0, 0, 1]
+            font_size:60
+            halign:'center'
+            valign:'center'
+            size_hint:(1, .2)
+            text_size:(400 - 50, 500 * 0.1 - 50)
+        Label:
+            id: lbl2
+            text: ''
+            color:[0, 0, 0, 1]
+            font_size:40
+            halign:'center'
+            valign:'center'
+            size_hint:(1, .1)
+            text_size:(400 - 50, 500 * 0.1 - 50)
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:(1, .1)
+            Label:
+                id: lbl3
+                text:
+                color:[0, 0, 0, 1]
+                font_size:30
+                halign:'left'
+                valign:'center'
+            Label:
+                id: lbl32
+                text:
+                color:[0, 0, 0, 1]
+                font_size:30
+                halign:'left'
+                valign:'center'
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:(1, .1)
+            Label:
+                id: lbl33
+                text:
+                color:[0, 0, 0, 1]
+                font_size:30
+                halign:'left'
+                valign:'top'
+            Label:
+                id: lbl34
+                text:
+                color:[0, 0, 0, 1]
+                font_size:30
+                halign:'left'
+                valign:'top'
+        Label:
+            id: lbl4
+            text:''
+            color:[.66, .10, .10, 1]
+            font_size:30
+            halign:'left'
+            valign:'center'
+            size_hint:(1, .2)
+            text_size:(400 - 50, 500 * 0.4 - 50)
+        GridLayout:
+            cols: 2
+            spacing: 30
+            size_hint: (1, .2)
+            Button:
+                id: btn3
+                text:'Play'
+                color:[0, 0, 0, 1]
+                background_normal: 'buk.png'
+                background_down: 'kosty.png'
+                font_size: 40
+                on_press:
+                    app.Ochered()
+                    app.R()
+                    lbl1.text = app.Label1()
+                    lbl2.text = app.Label2()
+                    lbl3.text = app.Label3()
+                    lbl32.text = app.Label3_2()
+                    lbl33.text = app.Label3_3()
+                    lbl34.text = app.Label3_4()
+                    lbl4.text = app.Label4()
+
+
+
+            Button:
+                id: btn4
+                text:'Pas'
+                color:[0, 0, 0, 1]
+                background_normal: 'buk.png'
+                background_down: 'klyon.png'
+                font_size: 40
+                on_press:
+                    app.Pas()
+                    app.Enemy_bot()
+                    lbl1.text = app.Label1()
+                    lbl2.text = app.Label2()
+                    lbl3.text = app.Label3()
+                    lbl32.text = app.Label3_2()
+                    lbl33.text = app.Label3_3()
+                    lbl34.text = app.Label3_4()
+                    lbl4.text = app.Label4()
+
+
+
+<Screen3>:
+    name: 'settings'
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'klyon.png'
+    BoxLayout:
+        id: blt
+        orientation:'vertical'
+        padding: 10
+        GridLayout:
+            cols: 3
+            size_hint:(1, .1)
+            Button:
+                size_hint_x: None
+                width: 60
+                background_normal:'strelka.jpg'
+                background_down: 'strelka.jpg'
+                on_release:
+                    root.manager.current = 'start'
+            Widget:
+            Button:
+                text:'game rules'
+                color:[0, 0, 0, 1]
+                font_size: 20
+                size_hint_x: None
+                width: 110
+                background_down: 'klyon.png'
+                background_normal:'buk.png'
+                on_release:
+                    lbl5.text = app.Game_rules()
+        ScrollView:
+            size_hint: (1, .9)
+            bar_width: 10
+            bar_color: 1, 0, 0, 1   # red
+            bar_inactive_color: 0, 0, 1, 1   # blue
+            effect_cls: "ScrollEffect"
+            scroll_type: ['bars']
+            BoxLayout:
+                Label:
+                    id: lbl5
+                    size_hint_y: None
+                    text:
+                    color:[.0, .0, .0, 1]
+                    font_size:15
+                    halign:'left'
+                    valign:'top'
+                    size_hint:(1, .9)
+                    text_size:(400-20, 500)
+
+
+
+
